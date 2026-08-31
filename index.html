@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>Stardew Valley ID List </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor" role="main">
+        <header>
+            <h1>
+                <span>🌾 Stardew Valley</span>
+                <span style="font-weight:300; color:#4d6b4c;">ID List</span>
+            </h1>
+            <p class="subtitulo">
+                Todos los objetos con su <strong>ID</strong> y <strong>valor</strong> (en <abbr title="Oro">g</abbr>).
+                Usa el buscador para filtrar por nombre o ID.
+            </p>
+        </header>
+
+        <section class="buscador" role="search" aria-label="Filtrar objetos">
+            <label for="filtro-input">
+                <span aria-hidden="true">🔍</span> Buscar
+            </label>
+            <input type="text" id="filtro-input" placeholder="Ej: 'prismatic', '74'..." aria-describedby="contador-resultados">
+            <span class="contador-resultados" id="contador-resultados" aria-live="polite">0 objetos</span>
+        </section>
+
+        <div class="tabla-wrapper" role="table" aria-label="Lista de IDs de Stardew Valley">
+            <table id="tabla-items">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                    <!-- Los datos se inyectan con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="mensaje-vacio" class="sin-resultados" style="display: none;" role="status">
+            <span aria-hidden="true">🧺</span> No hay objetos que coincidan con tu búsqueda.
+        </div>
+
+        <footer>
+            <span>✨ Datos extraídos de <a href="https://stardewlist.com/" target="_blank" rel="noopener noreferrer">stardewlist.com</a></span>
+            <span>NSK</span>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
