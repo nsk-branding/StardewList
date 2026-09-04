@@ -768,3 +768,198 @@ footer a:hover {
         font-size: 0.85rem;
     }
 }
+
+/* ============================================
+   CROP CARDS
+   ============================================ */
+.crop-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.crop-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+}
+
+.crop-card .crop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.crop-card .crop-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.crop-card .crop-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a6b3c;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+}
+
+.crop-card .crop-value::after {
+    content: 'g';
+    font-size: 0.8rem;
+    margin-left: 1px;
+    color: #6f7a66;
+}
+
+.crop-card .crop-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+}
+
+.crop-card .crop-detail {
+    display: flex;
+    font-size: 0.85rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.crop-card .crop-detail:last-child {
+    border-bottom: none;
+}
+
+.crop-card .crop-description {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.crop-card .crop-description .detail-value {
+    font-style: italic;
+    color: #5a5a57;
+}
+
+/* ============================================
+   MINERAL CARDS
+   ============================================ */
+.mineral-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.mineral-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+}
+
+.mineral-card .mineral-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    flex-wrap: wrap;
+}
+
+.mineral-card .mineral-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.mineral-card .mineral-type {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #5a5a57;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+}
+
+.mineral-card .mineral-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a6b3c;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+}
+
+.mineral-card .mineral-value::after {
+    content: 'g';
+    font-size: 0.8rem;
+    margin-left: 1px;
+    color: #6f7a66;
+}
+
+.mineral-card .mineral-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+}
+
+.mineral-card .mineral-detail {
+    display: flex;
+    font-size: 0.85rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.mineral-card .mineral-detail:last-child {
+    border-bottom: none;
+}
+
+.mineral-card .mineral-description {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mineral-card .mineral-description .detail-value {
+    font-style: italic;
+    color: #5a5a57;
+}
+
+@media (max-width: 768px) {
+    .crop-card .crop-detail,
+    .mineral-card .mineral-detail {
+        flex-direction: column;
+        padding: 0.3rem 0;
+    }
+    
+    .crop-card .detail-label,
+    .mineral-card .detail-label {
+        min-width: auto;
+        font-size: 0.8rem;
+    }
+    
+    .crop-card .detail-value,
+    .mineral-card .detail-value {
+        font-size: 0.85rem;
+    }
+
+    .mineral-card .mineral-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
