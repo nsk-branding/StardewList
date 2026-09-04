@@ -1,0 +1,770 @@
+/* ============================================
+   RESET & VARIABLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f0ebe3;
+    --text: #2c2b28;
+    --green-stardew: #5b8c5a;
+    --green-light: #7fb07e;
+    --green-dark: #3d6b3c;
+    --border-color: #d6d0c4;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --radius: 16px;
+    --font: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --love-color: #2d7d2d;
+    --like-color: #4a8c4a;
+    --neutral-color: #8a7a5a;
+    --dislike-color: #b07a3a;
+    --hate-color: #b33a3a;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(91, 140, 90, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(91, 140, 90, 0.05) 0%, transparent 50%);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.main-nav {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--green-stardew);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    background: rgba(91, 140, 90, 0.1);
+    color: var(--green-stardew);
+}
+
+.nav-links a.active {
+    background: var(--green-stardew);
+    color: white;
+}
+
+.nav-links a.active:hover {
+    background: var(--green-dark);
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1.5rem 1.5rem 2.5rem;
+    flex: 1;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--green-stardew);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5a5a57;
+    margin-top: 0.3rem;
+    max-width: 700px;
+}
+
+/* ============================================
+   SEARCH
+   ============================================ */
+.search-section {
+    margin-bottom: 2.2rem;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.8rem 1.5rem;
+    border-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--green-stardew);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 30px rgba(91, 140, 90, 0.1);
+}
+
+.search-wrapper label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #3d3d3a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-wrapper input {
+    flex: 1 1 200px;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid #cdc6b8;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    background: white;
+    transition: 0.2s;
+    min-width: 160px;
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: var(--green-stardew);
+    box-shadow: 0 0 0 3px rgba(91, 140, 90, 0.15);
+}
+
+.result-counter {
+    margin-left: auto;
+    font-size: 0.9rem;
+    background: var(--green-light);
+    color: white;
+    padding: 0.3rem 1.2rem;
+    border-radius: 40px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ============================================
+   TABLE (Items Page)
+   ============================================ */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1px solid #e7e2d8;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 460px;
+}
+
+thead {
+    background: linear-gradient(180deg, #eef0ea, #e4e7de);
+    border-bottom: 2px solid #cbc3b5;
+}
+
+th {
+    text-align: left;
+    padding: 1rem 0.8rem;
+    font-weight: 600;
+    color: #2e3d2e;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+th:not(:last-child) {
+    border-right: 1px solid #d3cdbf;
+}
+
+td {
+    padding: 0.75rem 0.8rem;
+    border-bottom: 1px solid #e1dad0;
+    vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(248, 246, 242, 0.5);
+}
+
+tbody tr:hover {
+    background-color: rgba(237, 245, 235, 0.7);
+    transition: 0.15s;
+}
+
+.item-name {
+    font-weight: 500;
+    color: #1f3b1f;
+}
+
+.item-id {
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    background: #f0ede7;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #3f4a3a;
+    display: inline-block;
+}
+
+.item-value {
+    font-weight: 500;
+    color: #4a6b3c;
+}
+
+.item-value::after {
+    content: 'g';
+    font-size: 0.8rem;
+    margin-left: 1px;
+    color: #6f7a66;
+}
+
+/* ============================================
+   CARDS (Characters Page - Glassmorphism)
+   ============================================ */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin: 0 -0.5rem;
+}
+
+.villager-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.villager-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+}
+
+.villager-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.villager-card .card-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.villager-card .card-schedule {
+    font-size: 0.85rem;
+    color: #5a5a57;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.villager-card .gift-section {
+    margin-top: 0.8rem;
+}
+
+.villager-card .gift-section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+}
+
+.villager-card .gift-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.villager-card .gift-list li {
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.love { color: var(--love-color); }
+.like { color: var(--like-color); }
+.neutral { color: var(--neutral-color); }
+.dislike { color: var(--dislike-color); }
+.hate { color: var(--hate-color); }
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.no-results {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #6f6a60;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    margin-top: 2.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd8ce;
+    font-size: 0.9rem;
+    color: #6b685f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+footer a {
+    color: var(--green-stardew);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.6rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .search-wrapper {
+        border-radius: 30px;
+        padding: 0.6rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    .search-wrapper input {
+        flex: 1 1 140px;
+        min-width: 120px;
+        padding: 0.5rem 1rem;
+    }
+
+    .result-counter {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    th,
+    td {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .item-id {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.8rem;
+        min-width: 300px;
+    }
+
+    th,
+    td {
+        padding: 0.4rem 0.3rem;
+    }
+
+    .villager-card {
+        padding: 1rem;
+    }
+
+    .villager-card .card-name {
+        font-size: 1.1rem;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e5dfd5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--green-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--green-stardew);
+}
+
+/* ============================================
+   SEARCH BUTTON
+   ============================================ */
+.search-button {
+    padding: 0.7rem 1.5rem;
+    background: var(--green-stardew);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(91, 140, 90, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .search-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+}
+
+/* ============================================
+   SCHEDULE STYLES
+   ============================================ */
+.schedule-section {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 0.8rem;
+}
+
+.schedule-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 0.5rem;
+}
+
+.schedule-details {
+    font-size: 0.8rem;
+}
+
+.season-schedule {
+    margin-bottom: 0.8rem;
+    border-left: 2px solid rgba(91, 140, 90, 0.3);
+    padding-left: 0.8rem;
+}
+
+.season-title {
+    font-weight: 600;
+    color: var(--green-stardew);
+    margin-bottom: 0.3rem;
+}
+
+.schedule-condition {
+    margin: 0.2rem 0;
+    padding: 0.1rem 0;
+}
+
+.condition-label {
+    font-weight: 500;
+    color: #5a5a57;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.schedule-text {
+    color: #3d3a35;
+    line-height: 1.6;
+    display: inline;
+}
+
+.card-info {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.info-item {
+    font-size: 0.85rem;
+    color: #4d4a44;
+    padding: 0.1rem 0;
+}
+
+@media (max-width: 768px) {
+    .schedule-text {
+        font-size: 0.75rem;
+    }
+    .condition-label {
+        min-width: 60px;
+        font-size: 0.75rem;
+    }
+    .season-schedule {
+        padding-left: 0.5rem;
+    }
+}
+
+/* ============================================
+   FISH CARDS
+   ============================================ */
+.fish-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.fish-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+}
+
+.fish-card .fish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.fish-card .fish-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.fish-card .fish-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a6b3c;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+}
+
+.fish-card .fish-value::after {
+    content: 'g';
+    font-size: 0.8rem;
+    margin-left: 1px;
+    color: #6f7a66;
+}
+
+.fish-card .fish-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+}
+
+.fish-card .fish-detail {
+    display: flex;
+    font-size: 0.85rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.fish-card .fish-detail:last-child {
+    border-bottom: none;
+}
+
+.fish-card .detail-label {
+    font-weight: 600;
+    color: #4d4a44;
+    min-width: 100px;
+    flex-shrink: 0;
+}
+
+.fish-card .detail-value {
+    color: #3d3a35;
+}
+
+.fish-card .fish-description {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.fish-card .fish-description .detail-value {
+    font-style: italic;
+    color: #5a5a57;
+}
+
+/* Difficulty stars color */
+.fish-card .detail-value .star-filled {
+    color: #f5c842;
+}
+
+.fish-card .detail-value .star-empty {
+    color: #d4cec4;
+}
+
+@media (max-width: 768px) {
+    .fish-card .fish-detail {
+        flex-direction: column;
+        padding: 0.3rem 0;
+    }
+    
+    .fish-card .detail-label {
+        min-width: auto;
+        font-size: 0.8rem;
+    }
+    
+    .fish-card .detail-value {
+        font-size: 0.85rem;
+    }
+}

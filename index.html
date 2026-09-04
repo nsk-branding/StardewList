@@ -1,58 +1,75 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>Stardew Valley ID List </title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Stardew Valley - ID List</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="contenedor" role="main">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>🌾</span> Stardew Guide
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">📦 Items</a></li>
+                <li><a href="characters.html">👥 Villagers</a></li>
+                <li><a href="fishing.html">🎣 Fishing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" role="main">
         <header>
             <h1>
                 <span>🌾 Stardew Valley</span>
                 <span style="font-weight:300; color:#4d6b4c;">ID List</span>
             </h1>
-            <p class="subtitulo">
-                Todos los objetos con su <strong>ID</strong> y <strong>valor</strong> (en <abbr title="Oro">g</abbr>).
-                Usa el buscador para filtrar por nombre o ID.
+            <p class="subtitle">
+                All items with their <strong>ID</strong>, <strong>name</strong> and <strong>value</strong> (in <abbr title="Gold">g</abbr>).
+                Search by name, ID, or value.
             </p>
         </header>
 
-        <section class="buscador" role="search" aria-label="Filtrar objetos">
-            <label for="filtro-input">
-                <span aria-hidden="true">🔍</span> Buscar
-            </label>
-            <input type="text" id="filtro-input" placeholder="Ej: 'prismatic', '74'..." aria-describedby="contador-resultados">
-            <span class="contador-resultados" id="contador-resultados" aria-live="polite">0 objetos</span>
+        <section class="search-section" role="search" aria-label="Filter items">
+            <div class="search-wrapper">
+                <label for="filter-input">
+                    <span aria-hidden="true">🔍</span> Search
+                </label>
+                <input type="text" id="filter-input" placeholder="e.g.: 'prismatic', '74', '500'..." aria-describedby="result-counter">
+                <button class="search-button" type="button">Search</button>
+                <span class="result-counter" id="result-counter" aria-live="polite">0 items</span>
+            </div>
         </section>
 
-        <div class="tabla-wrapper" role="table" aria-label="Lista de IDs de Stardew Valley">
-            <table id="tabla-items">
+        <div class="table-wrapper" role="table" aria-label="Stardew Valley items list">
+            <table id="items-table">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Name</th>
                         <th scope="col">ID</th>
-                        <th scope="col">Valor</th>
+                        <th scope="col">Value</th>
                     </tr>
                 </thead>
-                <tbody id="cuerpo-tabla">
-                    <!-- Los datos se inyectan con JavaScript -->
+                <tbody id="table-body">
+                    <!-- Data injected by JavaScript -->
                 </tbody>
             </table>
         </div>
 
-        <div id="mensaje-vacio" class="sin-resultados" style="display: none;" role="status">
-            <span aria-hidden="true">🧺</span> No hay objetos que coincidan con tu búsqueda.
+        <div id="empty-message" class="no-results" style="display: none;" role="status">
+            <span aria-hidden="true">🧺</span> No items match your search.
         </div>
 
         <footer>
-            <span>✨ Datos extraídos de <a href="https://stardewlist.com/" target="_blank" rel="noopener noreferrer">stardewlist.com</a></span>
+            <span>✨ Data from <a href="https://stardewlist.com/" target="_blank" rel="noopener noreferrer">stardewlist.com</a></span>
             <span>NSK</span>
         </footer>
     </div>
 
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
