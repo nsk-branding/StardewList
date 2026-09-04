@@ -1,67 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>Stardew Valley - Crops Guide</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>🌾</span> Stardew Guide
+// app-minerals.js - Minerals guide logic
+(function() {
+    "use strict";
+
+    const cardsContainer = document.getElementById('minerals-cards');
+    const filterInput = document.getElementById('filter-input');
+    const counterSpan = document.getElementById('result-counter');
+    const emptyMessage = document.getElementById('empty-message');
+    const searchButton = document.querySelector('.search-button');
+
+    function createMineralCard(mineral) {
+        const typeEmoji = mineral.tipo === 'Gem' ? '💎' : 
+                         mineral.tipo === 'Geode' ? '🪨' : 
+                         mineral.tipo === 'Bar' ? '🔨' : '⛏️';
+        const valueDisplay = mineral.valor === 0 ? 'N/A' : `${mineral.valor}g`;
+
+        return `
+            <div class="mineral-card">
+                <div class="mineral-header">
+                    <div class="mineral-name">${typeEmoji} ${mineral.nombre}</div>
+                    <div class="mineral-type">${mineral.tipo}</div>
+                    <div class="mineral-value">${valueDisplay}</div>
+                </div>
+                <div class="mineral-info">
+                    <div class="mineral-detail">
+                        <span class="detail-label">📍 Location:</span>
+                        <span class="detail-value">${mineral.ubicacion}</span>
+                    </div>
+                    <div class="mineral-detail mineral-description">
+                        <span class="detail-label">📝 Description:</span>
+                        <span class="detail-value">${mineral.descripcion}</span>
+                    </div>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">📦 Items</a></li>
-                <li><a href="characters.html">👥 Villagers</a></li>
-                <li><a href="fishing.html">🎣 Fishing</a></li>
-                <li><a href="crops.html" class="active">🌱 Crops</a></li>
-                <li><a href="minerals.html">💎 Minerals</a></li>
-            </ul>
-        </div>
-    </nav>
+        `;
+    }
 
-    <div class="container" role="main">
-        <header>
-            <h1>
-                <span>🌾 Stardew Valley</span>
-                <span style="font-weight:300; color:#4d6b4c;">Crops Guide</span>
-            </h1>
-            <p class="subtitle">
-                All crops with their <strong>seasons</strong>, <strong>growth times</strong>, and <strong>prices</strong>.
-                Search by name, season, or seed type.
-            </p>
-        </header>
+    function renderMineralsData(mineralsData) {
+        cardsContainer.innerHTML = '';
 
-        <section class="search-section" role="search" aria-label="Filter crops">
-            <div class="search-wrapper">
-                <label for="filter-input">
-                    <span aria-hidden="true">🔍</span> Search
-                </label>
-                <input type="text" id="filter-input" placeholder="e.g.: 'parsnip', 'spring', 'ancient'..." aria-describedby="result-counter">
-                <button class="search-button" type="button">Search</button>
-                <span class="result-counter" id="result-counter" aria-live="polite">0 crops</span>
-            </div>
-        </section>
+        if (!mineralsData || mineralsData.length === 0) {
+            emptyMessage.style.display = 'block';
+            counterSpan.textContent = '0 minerals';
+            return;
+        }
 
-        <!-- Crops Cards Grid -->
-        <div id="crops-cards" class="cards-grid">
-            <!-- Cards injected by JavaScript -->
-        </div>
+        emptyMessage.style.display = 'none';
+        counterSpan.textContent = `${mineralsData.length} minerals`;
 
-        <div id="empty-message" class="no-results" style="display: none;" role="status">
-            <span aria-hidden="true">🧺</span> No crops match your search.
-        </div>
+        const fragment = document.createDocumentFragment();
 
-        <footer>
-            <span>✨ Data based on <a href="https://stardewvalleywiki.com/" target="_blank" rel="noopener noreferrer">Stardew Valley Wiki</a></span>
-            <span>NSK</span>
-        </footer>
-    </div>
+        mineralsData.forEach(mineral => {
+            const card = document.createElement('div');
+            card.className = 'mineral-card';
+            card.innerHTML = createMineralCard(mineral);
+            fragment.appendChild(card);
+        });
 
-    <script src="js/data-crops.js"></script>
-    <script src="js/app-crops.js"></script>
-</body>
-</html>
+        cardsContainer.appendChild(fragment);
+    }
+
+    function filterMineralsData(text) {
+        const search = text.trim().toLowerCase();
+        console.log('🔍 Searching minerals for:', search);
+
+        if (search === '') {
+            renderMineralsData(MINERALS_DATA);
+            return;
+        }
+
+        const filtered = MINERALS_DATA.filter(mineral => {
+            const nameMatch = mineral.nombre.toLowerCase().includes(search);
+            const typeMatch = mineral.tipo.toLowerCase().includes(search);
+            const locationMatch = mineral.ubicacion.toLowerCase().includes(search);
+            const descriptionMatch = mineral.descripcion.toLowerCase().includes(search);
+            
+            return nameMatch || typeMatch || locationMatch || descriptionMatch;
+        });
+
+        console.log('✅ Found:', filtered.length, 'minerals');
+        renderMineralsData(filtered);
+    }
+
+    // Event listeners
+    filterInput.addEventListener('input', function(e) {
+        filterMineralsData(e.target.value);
+    });
+
+    filterInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            filterMineralsData(e.target.value);
+        }
+    });
+
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            filterMineralsData(filterInput.value);
+        });
+    }
+
+    // Initial render
+    console.log('💎 Initial render with', MINERALS_DATA.length, 'minerals');
+    renderMineralsData(MINERALS_DATA);
+})();
