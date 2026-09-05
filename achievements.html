@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>Stardew Valley - Minerals Guide</title>
+    <title>Stardew Valley - Achievements Guide</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -29,32 +29,35 @@
         <header>
             <h1>
                 <span>🌾 Stardew Valley</span>
-                <span style="font-weight:300; color:#4d6b4c;">Minerals Guide</span>
+                <span style="font-weight:300; color:#4d6b4c;">Achievements Guide</span>
             </h1>
             <p class="subtitle">
-                All minerals, gems, and resources with their <strong>types</strong>, <strong>values</strong>, and <strong>locations</strong>.
-                Search by name, type, or location.
+                Track your progress for <strong>Shipping Achievements</strong>.
+                Search by achievement name or item.
             </p>
         </header>
 
-        <section class="search-section" role="search" aria-label="Filter minerals">
+        <!-- Filtro -->
+        <section class="search-section" role="search">
             <div class="search-wrapper">
                 <label for="filter-input">
                     <span aria-hidden="true">🔍</span> Search
                 </label>
-                <input type="text" id="filter-input" placeholder="e.g.: 'diamond', 'gem', 'mines'..." aria-describedby="result-counter">
+                <input type="text" id="filter-input" 
+                       placeholder="e.g.: 'Polyculture', 'Parsnip'..." 
+                       aria-describedby="result-counter">
                 <button class="search-button" type="button">Search</button>
-                <span class="result-counter" id="result-counter" aria-live="polite">0 minerals</span>
+                <span class="result-counter" id="result-counter">0 achievements</span>
             </div>
         </section>
 
-        <!-- Minerals Cards Grid -->
-        <div id="minerals-cards" class="cards-grid">
-            <!-- Cards injected by JavaScript -->
+        <!-- Cards grid -->
+        <div id="achievements-cards" class="cards-grid">
+            <!-- Inyectado por JavaScript -->
         </div>
 
-        <div id="empty-message" class="no-results" style="display: none;" role="status">
-            <span aria-hidden="true">🧺</span> No minerals match your search.
+        <div id="empty-message" class="no-results" style="display: none;">
+            <span aria-hidden="true">🧺</span> No achievements match your search.
         </div>
 
         <footer>
@@ -63,7 +66,8 @@
         </footer>
     </div>
 
-    <script src="js/data-minerals.js"></script>
-    <script src="js/app-minerals.js"></script>
+    <script src="js/data-shipping.js"></script>
+    <script src="js/data-achievements.js"></script>
+    <script src="js/app-achievements.js"></script>
 </body>
 </html>

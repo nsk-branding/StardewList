@@ -33,7 +33,6 @@ body {
     color: var(--text);
     font-family: var(--font);
     line-height: 1.6;
-    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -106,7 +105,7 @@ body {
 }
 
 /* ============================================
-   CONTAINER
+   CONTAINER & HEADER
    ============================================ */
 .container {
     max-width: 1400px;
@@ -116,9 +115,6 @@ body {
     flex: 1;
 }
 
-/* ============================================
-   HEADER
-   ============================================ */
 header {
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 1.2rem;
@@ -198,6 +194,29 @@ h1 {
     box-shadow: 0 0 0 3px rgba(91, 140, 90, 0.15);
 }
 
+.search-button {
+    padding: 0.7rem 1.5rem;
+    background: var(--green-stardew);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(91, 140, 90, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
 .result-counter {
     margin-left: auto;
     font-size: 0.9rem;
@@ -207,6 +226,23 @@ h1 {
     border-radius: 40px;
     font-weight: 500;
     white-space: nowrap;
+}
+
+/* Filtros avanzados */
+.filter-select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #cdc6b8;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    background: white;
+    min-width: 130px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-select:focus {
+    outline: 2px solid var(--green-stardew);
+    border-color: transparent;
 }
 
 /* ============================================
@@ -293,7 +329,7 @@ tbody tr:hover {
 }
 
 /* ============================================
-   CARDS (Characters Page - Glassmorphism)
+   CARDS GENÉRICAS (Glassmorphism)
    ============================================ */
 .cards-grid {
     display: grid;
@@ -302,7 +338,13 @@ tbody tr:hover {
     margin: 0 -0.5rem;
 }
 
-.villager-card {
+/* Base para todas las cards */
+.villager-card,
+.fish-card,
+.crop-card,
+.mineral-card,
+.achievement-card,
+.shipping-card {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -314,12 +356,20 @@ tbody tr:hover {
     animation: fadeIn 0.3s ease-out;
 }
 
-.villager-card:hover {
+.villager-card:hover,
+.fish-card:hover,
+.crop-card:hover,
+.mineral-card:hover,
+.achievement-card:hover,
+.shipping-card:hover {
     transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.35);
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
 }
 
+/* ============================================
+   VILLAGER CARDS
+   ============================================ */
 .villager-card .card-header {
     display: flex;
     justify-content: space-between;
@@ -378,203 +428,6 @@ tbody tr:hover {
 .neutral { color: var(--neutral-color); }
 .dislike { color: var(--dislike-color); }
 .hate { color: var(--hate-color); }
-
-/* ============================================
-   EMPTY STATE
-   ============================================ */
-.no-results {
-    padding: 3rem 1rem;
-    text-align: center;
-    color: #6f6a60;
-    font-size: 1.1rem;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    margin: 0.5rem 0;
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-footer {
-    margin-top: 2.8rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #ddd8ce;
-    font-size: 0.9rem;
-    color: #6b685f;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-footer a {
-    color: var(--green-stardew);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem 0.6rem 1.5rem;
-    }
-
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    .nav-container {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0.6rem 1rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-links a {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.8rem;
-    }
-
-    .search-wrapper {
-        border-radius: 30px;
-        padding: 0.6rem 1rem;
-        flex-wrap: wrap;
-    }
-
-    .search-wrapper input {
-        flex: 1 1 140px;
-        min-width: 120px;
-        padding: 0.5rem 1rem;
-    }
-
-    .result-counter {
-        margin-left: 0;
-        width: auto;
-    }
-
-    .cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    th,
-    td {
-        padding: 0.6rem 0.4rem;
-        font-size: 0.85rem;
-    }
-
-    .item-id {
-        font-size: 0.75rem;
-        padding: 0.1rem 0.4rem;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 480px) {
-    table {
-        font-size: 0.8rem;
-        min-width: 300px;
-    }
-
-    th,
-    td {
-        padding: 0.4rem 0.3rem;
-    }
-
-    .villager-card {
-        padding: 1rem;
-    }
-
-    .villager-card .card-name {
-        font-size: 1.1rem;
-    }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: #e5dfd5;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--green-light);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--green-stardew);
-}
-
-/* ============================================
-   SEARCH BUTTON
-   ============================================ */
-.search-button {
-    padding: 0.7rem 1.5rem;
-    background: var(--green-stardew);
-    color: white;
-    border: none;
-    border-radius: 40px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    white-space: nowrap;
-}
-
-.search-button:hover {
-    background: var(--green-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(91, 140, 90, 0.3);
-}
-
-.search-button:active {
-    transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-    .search-button {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-        width: 100%;
-    }
-}
 
 /* ============================================
    SCHEDULE STYLES
@@ -640,40 +493,9 @@ footer a:hover {
     padding: 0.1rem 0;
 }
 
-@media (max-width: 768px) {
-    .schedule-text {
-        font-size: 0.75rem;
-    }
-    .condition-label {
-        min-width: 60px;
-        font-size: 0.75rem;
-    }
-    .season-schedule {
-        padding-left: 0.5rem;
-    }
-}
-
 /* ============================================
    FISH CARDS
    ============================================ */
-.fish-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.fish-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
-}
-
 .fish-card .fish-header {
     display: flex;
     justify-content: space-between;
@@ -744,52 +566,9 @@ footer a:hover {
     color: #5a5a57;
 }
 
-/* Difficulty stars color */
-.fish-card .detail-value .star-filled {
-    color: #f5c842;
-}
-
-.fish-card .detail-value .star-empty {
-    color: #d4cec4;
-}
-
-@media (max-width: 768px) {
-    .fish-card .fish-detail {
-        flex-direction: column;
-        padding: 0.3rem 0;
-    }
-    
-    .fish-card .detail-label {
-        min-width: auto;
-        font-size: 0.8rem;
-    }
-    
-    .fish-card .detail-value {
-        font-size: 0.85rem;
-    }
-}
-
 /* ============================================
    CROP CARDS
    ============================================ */
-.crop-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.crop-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
-}
-
 .crop-card .crop-header {
     display: flex;
     justify-content: space-between;
@@ -852,24 +631,6 @@ footer a:hover {
 /* ============================================
    MINERAL CARDS
    ============================================ */
-.mineral-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.mineral-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
-}
-
 .mineral-card .mineral-header {
     display: flex;
     justify-content: space-between;
@@ -940,26 +701,443 @@ footer a:hover {
     color: #5a5a57;
 }
 
+/* ============================================
+   ACHIEVEMENT CARDS
+   ============================================ */
+.achievement-card .achievement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.achievement-card .achievement-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.achievement-card .achievement-description {
+    font-size: 0.95rem;
+    color: #4d4a44;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-card .achievement-requirement {
+    font-size: 0.85rem;
+    color: #5a5a57;
+    margin-bottom: 0.8rem;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+}
+
+.achievement-card .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(200, 200, 200, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.achievement-card .progress-fill {
+    height: 100%;
+    background: var(--green-stardew);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.achievement-card .progress-text {
+    font-size: 0.85rem;
+    color: #4d4a44;
+    margin-bottom: 0.8rem;
+}
+
+.achievement-card .achievement-items {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.achievement-card .achievement-items details {
+    cursor: pointer;
+}
+
+.achievement-card .achievement-items summary {
+    font-weight: 500;
+    color: var(--green-stardew);
+    padding: 0.3rem 0;
+}
+
+.achievement-card .items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.item-tag {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.item-tag.completed {
+    background: rgba(91, 140, 90, 0.15);
+    border-color: var(--green-stardew);
+}
+
+.item-tag.pending {
+    background: rgba(200, 200, 200, 0.15);
+    border-color: #ccc;
+}
+
+/* ============================================
+   SHIPPING CARDS
+   ============================================ */
+.shipping-card .shipping-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.shipping-card .shipping-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.shipping-card .shipping-status {
+    font-size: 1.2rem;
+}
+
+.shipping-card .shipping-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4a6b3c;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+}
+
+.shipping-card .shipping-value::after {
+    content: 'g';
+    font-size: 0.8rem;
+    margin-left: 1px;
+    color: #6f7a66;
+}
+
+.shipping-card .shipping-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.shipping-card .shipping-detail {
+    display: flex;
+    font-size: 0.85rem;
+    padding: 0.2rem 0;
+}
+
+.shipping-card .shipping-detail .detail-label {
+    font-weight: 600;
+    color: #4d4a44;
+    min-width: 80px;
+}
+
+.shipping-card .shipping-detail .detail-value {
+    color: #3d3a35;
+}
+
+.toggle-shipped-btn {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+}
+
+.toggle-shipped-btn.shipped {
+    background: var(--green-stardew);
+    color: white;
+}
+
+.toggle-shipped-btn.shipped:hover {
+    background: var(--green-dark);
+}
+
+.toggle-shipped-btn.pending {
+    background: #e0ddd5;
+    color: #4d4a44;
+}
+
+.toggle-shipped-btn.pending:hover {
+    background: #cdc6b8;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.no-results {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #6f6a60;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    margin-top: 2.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd8ce;
+    font-size: 0.9rem;
+    color: #6b685f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+footer a {
+    color: var(--green-stardew);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e5dfd5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--green-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--green-stardew);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.6rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .search-wrapper {
+        border-radius: 30px;
+        padding: 0.6rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    .search-wrapper input {
+        flex: 1 1 140px;
+        min-width: 120px;
+        padding: 0.5rem 1rem;
+    }
+
+    .search-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+
+    .result-counter {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    th,
+    td {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .item-id {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.4rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Responsive para cards específicas */
+    .fish-card .fish-detail,
     .crop-card .crop-detail,
-    .mineral-card .mineral-detail {
+    .mineral-card .mineral-detail,
+    .shipping-card .shipping-detail {
         flex-direction: column;
         padding: 0.3rem 0;
     }
-    
+
+    .fish-card .detail-label,
     .crop-card .detail-label,
-    .mineral-card .detail-label {
+    .mineral-card .detail-label,
+    .shipping-card .shipping-detail .detail-label {
         min-width: auto;
         font-size: 0.8rem;
     }
-    
+
+    .fish-card .detail-value,
     .crop-card .detail-value,
-    .mineral-card .detail-value {
+    .mineral-card .detail-value,
+    .shipping-card .shipping-detail .detail-value {
         font-size: 0.85rem;
     }
 
     .mineral-card .mineral-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .shipping-card .shipping-info {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-text {
+        font-size: 0.75rem;
+    }
+
+    .condition-label {
+        min-width: 60px;
+        font-size: 0.75rem;
+    }
+
+    .season-schedule {
+        padding-left: 0.5rem;
+    }
+
+    .filter-select {
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .items-grid {
+        gap: 0.3rem;
+    }
+
+    .item-tag {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.5rem;
+    }
+
+    .achievement-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.8rem;
+        min-width: 300px;
+    }
+
+    th,
+    td {
+        padding: 0.4rem 0.3rem;
+    }
+
+    .villager-card {
+        padding: 1rem;
+    }
+
+    .villager-card .card-name {
+        font-size: 1.1rem;
+    }
+
+    .shipping-card {
+        padding: 0.8rem;
+    }
+
+    .shipping-card .shipping-name {
+        font-size: 0.95rem;
+    }
+
+    .shipping-card .shipping-value {
+        font-size: 0.85rem;
+        padding: 0.1rem 0.6rem;
+    }
+
+    .toggle-shipped-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem;
     }
 }
