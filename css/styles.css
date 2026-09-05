@@ -27,7 +27,12 @@
     --dislike-color: #b07a3a;
     --hate-color: #b33a3a;
 }
-
+.nav-logo img {
+    height: 28px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 6px;
+}
 body {
     background-color: var(--bg);
     color: var(--text);
