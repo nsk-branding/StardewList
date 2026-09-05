@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
     <title>Stardew Valley - Shipping Collection</title>
+    <meta name="description" content="Complete Stardew Valley shipping collection tracker. Mark items as shipped and track your progress.">
 
-    <!-- Favicon para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="16x16" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
-<!-- Para dispositivos Apple -->
-<link rel="apple-touch-icon" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+    <link rel="apple-touch-icon" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-    <img src="https://stardewvalleywiki.com/mediawiki/images/1/18/Banner_Left.png" 
-         alt="Stardew Valley banner">
-    Stardew Guide
-</div>
+                <img src="https://stardewvalleywiki.com/mediawiki/images/1/18/Banner_Left.png" 
+                     alt="Stardew Valley banner" width="28" height="28">
+                <span>Stardew Guide</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">📦 Items</a></li>
                 <li><a href="characters.html">👥 Villagers</a></li>
@@ -27,25 +28,24 @@
                 <li><a href="crops.html">🌱 Crops</a></li>
                 <li><a href="minerals.html">💎 Minerals</a></li>
                 <li><a href="achievements.html">🏆 Achievements</a></li>
-                <li><a href="shipping.html" class="active">📦 Shipping</a></li>
+                <li><a href="shipping.html" class="active" aria-current="page">📦 Shipping</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container" role="main">
+    <main class="container" role="main">
         <header>
             <h1>
                 <span>🌾 Stardew Valley</span>
-                <span style="font-weight:300; color:#4d6b4c;">Shipping Collection</span>
+                <span class="h1-light">Shipping Collection</span>
             </h1>
             <p class="subtitle">
-                All items in the <strong>Shipping Collection</strong>. 
-                Mark items as shipped to track your progress.
+                Complete list of all items in the <strong>Shipping Collection</strong>.
+                <span class="highlight">Click the button</span> on each card to mark items as shipped and track your progress toward 100% Perfection.
             </p>
         </header>
 
-        <!-- Filtros avanzados -->
-        <section class="search-section" role="search">
+        <section class="search-section" role="search" aria-label="Filter shipping items">
             <div class="search-wrapper">
                 <label for="filter-input">
                     <span aria-hidden="true">🔍</span> Search
@@ -54,8 +54,8 @@
                        placeholder="e.g.: 'Parsnip', 'Summer', 'Fish'..." 
                        aria-describedby="result-counter">
                 
-                <!-- Filtros avanzados -->
-                <select id="filter-category" class="filter-select">
+                <!-- Advanced filters -->
+                <select id="filter-category" class="filter-select" aria-label="Filter by category">
                     <option value="">All Categories</option>
                     <option value="Crop">🌱 Crops</option>
                     <option value="Fruit">🍎 Fruits</option>
@@ -64,9 +64,10 @@
                     <option value="Forage">🌿 Forage</option>
                     <option value="Flower">🌸 Flowers</option>
                     <option value="Artisan">🧀 Artisan</option>
+                    <option value="Animal">🐄 Animal</option>
                 </select>
 
-                <select id="filter-season" class="filter-select">
+                <select id="filter-season" class="filter-select" aria-label="Filter by season">
                     <option value="">All Seasons</option>
                     <option value="Spring">🌸 Spring</option>
                     <option value="Summer">☀️ Summer</option>
@@ -75,31 +76,30 @@
                     <option value="Any">📅 Any</option>
                 </select>
 
-                <select id="filter-status" class="filter-select">
+                <select id="filter-status" class="filter-select" aria-label="Filter by shipping status">
                     <option value="">All Status</option>
                     <option value="shipped">✅ Shipped</option>
                     <option value="pending">⬜ Pending</option>
                 </select>
 
                 <button class="search-button" type="button">Search</button>
-                <span class="result-counter" id="result-counter">0 items</span>
+                <span class="result-counter" id="result-counter" aria-live="polite">0 items</span>
             </div>
         </section>
 
-        <!-- Cards grid -->
         <div id="shipping-cards" class="cards-grid">
-            <!-- Inyectado por JavaScript -->
+            <!-- Injected by JavaScript -->
         </div>
 
-        <div id="empty-message" class="no-results" style="display: none;">
-            <span aria-hidden="true">🧺</span> No items match your search.
+        <div id="empty-message" class="no-results" style="display: none;" role="status">
+            <span aria-hidden="true">🔍</span> No items match your filters. Try adjusting your search.
         </div>
 
         <footer>
             <span>✨ Data based on <a href="https://stardewvalleywiki.com/" target="_blank" rel="noopener noreferrer">Stardew Valley Wiki</a></span>
-            <span>NSK</span>
+            <span>🌾 Stardew Guide</span>
         </footer>
-    </div>
+    </main>
 
     <script src="js/data-shipping.js"></script>
     <script src="js/app-shipping.js"></script>

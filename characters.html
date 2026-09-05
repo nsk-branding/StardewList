@@ -4,42 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
     <title>Stardew Valley - Villagers Guide</title>
+    <meta name="description" content="Complete Stardew Valley villagers guide with schedules, favorite gifts, and gift preferences.">
 
-    <!-- Favicon para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="16x16" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
-<!-- Para dispositivos Apple -->
-<link rel="apple-touch-icon" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+    <link rel="apple-touch-icon" href="https://stardewvalleywiki.com/mediawiki/images/thumb/b/bc/Iridium_Quality.png/16px-Iridium_Quality.png">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-    <img src="https://stardewvalleywiki.com/mediawiki/images/1/18/Banner_Left.png" 
-         alt="Stardew Valley banner">
-    Stardew Guide
-</div>
+                <img src="https://stardewvalleywiki.com/mediawiki/images/1/18/Banner_Left.png" 
+                     alt="Stardew Valley banner" width="28" height="28">
+                <span>Stardew Guide</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">📦 Items</a></li>
-                <li><a href="characters.html">👥 Villagers</a></li>
+                <li><a href="characters.html" class="active" aria-current="page">👥 Villagers</a></li>
                 <li><a href="fishing.html">🎣 Fishing</a></li>
                 <li><a href="crops.html">🌱 Crops</a></li>
                 <li><a href="minerals.html">💎 Minerals</a></li>
-                <li><a href="achievements.html" class="active">🏆 Achievements</a></li>
+                <li><a href="achievements.html">🏆 Achievements</a></li>
                 <li><a href="shipping.html">📦 Shipping</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container" role="main">
+    <main class="container" role="main">
         <header>
             <h1>
                 <span>🌾 Stardew Valley</span>
-                <span style="font-weight:300; color:#4d6b4c;">Villagers Guide</span>
+                <span class="h1-light">Villagers Guide</span>
             </h1>
             <p class="subtitle">
-                Search by <strong>villager name</strong> or by <strong>item</strong> to find out who loves, likes, or hates it.
+                Search by <strong>villager name</strong> or by <strong>gift item</strong> to discover who loves, likes, or hates it.
             </p>
         </header>
 
@@ -48,26 +49,27 @@
                 <label for="filter-input">
                     <span aria-hidden="true">🔍</span> Search
                 </label>
-                <input type="text" id="filter-input" placeholder="e.g.: 'abigail', 'pizza', 'diamond'..." aria-describedby="result-counter">
+                <input type="text" id="filter-input" 
+                       placeholder="e.g.: 'abigail', 'pizza', 'diamond'..." 
+                       aria-describedby="result-counter">
                 <button class="search-button" type="button">Search</button>
                 <span class="result-counter" id="result-counter" aria-live="polite">0 villagers</span>
             </div>
         </section>
 
-        <!-- Glassmorphism Cards Grid -->
         <div id="cards-container" class="cards-grid">
             <!-- Cards injected by JavaScript -->
         </div>
 
         <div id="empty-message" class="no-results" style="display: none;" role="status">
-            <span aria-hidden="true">🧺</span> No villagers or items match your search.
+            <span aria-hidden="true">🔍</span> No villagers or items match your search. Try a different keyword.
         </div>
 
         <footer>
             <span>✨ Data based on <a href="https://stardewvalleywiki.com/" target="_blank" rel="noopener noreferrer">Stardew Valley Wiki</a></span>
-            <span>NSK</span>
+            <span>🌾 Stardew Guide</span>
         </footer>
-    </div>
+    </main>
 
     <script src="js/data-characters.js"></script>
     <script src="js/app-characters.js"></script>
